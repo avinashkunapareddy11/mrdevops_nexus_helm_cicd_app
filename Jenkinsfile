@@ -4,7 +4,7 @@ pipeline {
             stage('sonar quality check') {
             agent {
                 docker {
-                    image 'maven:latest'
+                    image 'maven'
                 }
             }
             steps {
