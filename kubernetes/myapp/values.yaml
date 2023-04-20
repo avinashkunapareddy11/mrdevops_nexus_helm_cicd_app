@@ -13,4 +13,8 @@ image:
 service:
   type: NodePort
   port: 8080
+kind: Pod
+spec:
+  securityContext:
+    readOnlyRootFilesystem: true
 
