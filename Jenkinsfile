@@ -23,7 +23,7 @@ pipeline {
                 steps {
                     script{
                         
-                        waitForQualityGate abortPipeline: false, credentialsId: 'sonar-Token'
+                        waitForQualityGate abortPipeline: true, credentialsId: 'sonar-Token'
                     }
                 }
             }
