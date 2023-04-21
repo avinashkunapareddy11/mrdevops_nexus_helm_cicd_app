@@ -51,10 +51,4 @@ spec:
             limits:
               memory: 0.25Gi 
               cpu: 0.5
-kind: Deployment
-spec:
-  containers:
-    - name: myContainer
-      securityContext:
-        readOnlyRootFilesystem: true
 
