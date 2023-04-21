@@ -34,10 +34,10 @@ pipeline {
                     script{
                         withCredentials([string(credentialsId: 'nexus_passwd', variable: 'nexus_creds')]) {
                         sh '''
-                        docker build -t 35.171.158.68:8083/springapp:${VERSION} .
-                        docker login -u admin -p $nexus_creds 35.171.158.68:8083
-                        docker push 35.171.158.68:8083/springapp:${VERSION}
-                        docker rmi 35.171.158.68:8083/springapp:${VERSION}
+                        docker build -t 44.212.71.65:8083/springapp:${VERSION} .
+                        docker login -u admin -p $nexus_creds 44.212.71.65:8083
+                        docker push 44.212.71.65:80833/springapp:${VERSION}
+                        docker rmi 44.212.71.65:8083/springapp:${VERSION}
                         '''
                         }
 
@@ -65,7 +65,7 @@ pipeline {
                         withCredentials([string(credentialsId: 'nexus_passwd', variable: 'nexus_creds')]){
                             dir('kubernetes/') {
                         sh ''' 
-                        helmversion=$(helm show chart myapp | grep version | cut -d: -f 2 | tr -d '  ' )
+                        helmversion=$(helm show chart myapp | grep version | cut -d: -f 2 | tr -d '  ')
                         tar -czvf myapp-${helmversion}.tgz myapp/
                         curl -u admin:$nexus_creds http://35.171.158.68:8081/repository/helm-repo/ --upload-file myapp-${helmversion}.tgz -v
                         '''
